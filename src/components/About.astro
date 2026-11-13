@@ -1,40 +1,41 @@
 ---
 import { siteConfig } from "../config";
+
+const skillGroups = Object.entries(siteConfig.skills);
 ---
 
-<section id="about" class="p-8 sm:p-12 md:p-16 lg:p-24">
-  <div>
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
-      <div class="lg:col-span-4">
-        <h2
-          class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900"
-        >
-          About Me
-        </h2>
-        <div
-          class="w-[75px] h-[5px] mt-2 rounded-full"
-          style={`background-color: ${siteConfig.accentColor}`}
-        >
-        </div>
-      </div>
+<section id="about" class="bg-background px-6 py-20 sm:px-10 lg:px-16 lg:py-28">
+  <div class="mx-auto grid max-w-6xl grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
+    <div class="lg:col-span-4">
+      <h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+        About
+      </h2>
+      <div class="mt-4 h-1 w-16 rounded-full bg-accent"></div>
+    </div>
 
-      <div class="lg:col-span-8 space-y-8">
-        <p class="text-lg sm:text-xl md:text-2xl leading-relaxed text-gray-600">
-          {siteConfig.aboutMe}
-        </p>
+    <div class="space-y-10 lg:col-span-8">
+      <p class="text-lg leading-relaxed text-muted sm:text-xl">
+        {siteConfig.aboutMe}
+      </p>
 
-        <div class="pt-4">
-          <div class="flex flex-wrap gap-3">
-            {
-              siteConfig.skills.map((skill) => (
-                <span class="px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 text-gray-800 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-gray-200 transition-colors duration-200">
-                  {skill}
-                </span>
-              ))
-            }
+      {
+        skillGroups.length > 0 && (
+          <div class="space-y-8">
+            {skillGroups.map(([group, items]) => (
+              <div>
+                <h3 class="text-sm font-medium tracking-wide text-accent">{group}</h3>
+                <div class="mt-3 flex flex-wrap gap-2">
+                  {items.map((skill) => (
+                    <span class="rounded-full border border-border bg-surface px-3 py-1.5 text-sm text-foreground transition-colors duration-300 hover:border-accent/60">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </div>
+        )
+      }
     </div>
   </div>
 </section>

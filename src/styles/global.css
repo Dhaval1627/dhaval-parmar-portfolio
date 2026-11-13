@@ -1,5 +1,52 @@
 @import "tailwindcss";
 
+@theme {
+  --font-sans: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-background: #090d18;
+  --color-surface: #0f172a;
+  --color-card: #111827;
+  --color-accent: #2563eb;
+  --color-accent-secondary: #8b5cf6;
+  --color-foreground: #f8fafc;
+  --color-muted: #94a3b8;
+  --color-border: #263244;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
 body {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+#hero,
+#about,
+#projects,
+#experience,
+#education {
+  scroll-margin-top: 5.5rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

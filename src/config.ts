@@ -1,92 +1,122 @@
 export const siteConfig = {
-  name: "Ryan Fitzgerald",
-  title: "Senior Software Engineer",
-  description: "Portfolio website of Ryan Fitzgerald",
-  accentColor: "#1d4ed8",
+  name: "Dhaval Parmar",
+  title: "PHP Laravel Developer | Shopify App Developer",
+  description:
+    "Portfolio of Dhaval Parmar, a PHP developer with 4+ years of experience building Laravel and CodeIgniter applications and Shopify public and private apps.",
+  accentColor: "#2563EB",
   social: {
-    email: "your-email@example.com",
-    linkedin: "https://linkedin.com/in/yourprofile",
-    twitter: "https://x.com/rfitzio",
-    github: "https://github.com/RyanFitzgerald",
+    email: "dhavalsunnyparmar@gmail.com",
+    linkedin: "https://www.linkedin.com/in/dhaval-parmar-35bb6b237/",
   },
   aboutMe:
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem quos asperiores nihil consequatur tempore cupiditate architecto natus commodi corrupti quas quasi facere est, dignissimos odit nam veniam sapiente ut, vitae eligendi ipsum dolor, nostrum ullam impedit! Corrupti ratione mollitia temporibus necessitatibus, consectetur reiciendis recusandae id, dolorum quaerat, vero pariatur. Ratione!",
-  skills: ["Javascript", "React", "Node.js", "Python", "AWS", "Docker"],
+    "PHP developer with 4+ years of experience building web applications using Laravel, CodeIgniter, and Shopify app development. Experienced in developing Shopify public and private applications, CRM systems, automation tools, REST APIs, and third-party integrations.",
+  skills: {
+    Backend: ["PHP", "Laravel", "CodeIgniter"],
+    Frontend: ["HTML5", "CSS3", "Bootstrap", "JavaScript", "jQuery"],
+    Database: ["MySQL", "MariaDB"],
+    "APIs & Integrations": [
+      "Shopify API",
+      "REST APIs",
+      "Webhooks",
+      "QuickBooks API",
+      "DocuSign API",
+    ],
+    Tools: ["Git", "Postman", "Linux"],
+  },
   projects: [
     {
-      name: "AI Dev Roundup Newsletter",
+      name: "Mobile App Builder",
+      category: "Shopify public app",
       description:
-        "One concise email. Five minutes. Every Tuesday. Essential AI news & trends, production-ready libraries, powerful AI tools, and real-world code examples",
-      link: "https://aidevroundup.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "Shopify public app in development at CrawlApps Technologies. Merchants can create, customize, and publish Android and iOS applications for their stores. Integrations include Klaviyo, Growave, and RecurPay.",
+      skills: ["PHP", "Laravel", "Shopify API", "REST APIs", "Webhooks"],
     },
     {
-      name: "Chrome Extension Mastery: Build Full-Stack Extensions with React & Node.js",
+      name: "Wishlist App",
+      category: "Private application",
       description:
-        "Master the art of building production-ready, full-stack Chrome Extensions using modern web technologies and best practices",
-      link: "https://fullstackextensions.com/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "Private Shopify app developed at Cirkle Studio. Customers can save products and organize them into wishlist categories.",
+      skills: ["PHP", "Laravel", "Shopify API"],
     },
     {
-      name: "ExtensionKit",
+      name: "Product Price Drop App",
+      category: "Private application",
       description:
-        "Kit to jump-start your Chrome extension projects with a variety of battle-tested starter templates & examples",
-      link: "https://extensionkit.io/?ref=devportfolio",
-      skills: ["React", "Node.js", "AWS"],
+        "Private Shopify app developed at Cirkle Studio. Automates scheduled product discount updates.",
+      skills: ["PHP", "Laravel", "Shopify API"],
+    },
+    {
+      name: "Order Export Tools",
+      category: "Private application",
+      description:
+        "Private Shopify tooling developed at Cirkle Studio. Generates order data and emails it as Google Sheets and text files.",
+      skills: ["PHP", "Laravel", "Shopify API"],
+    },
+    {
+      name: "Photo Confirmation App",
+      description:
+        "Sends product and order confirmation images by email.",
+      skills: [],
+    },
+    {
+      name: "Multi-Store Locator App",
+      description:
+        "Uses Google Maps so customers can locate stores.",
+      skills: [],
+    },
+    {
+      name: "Innovate Real Estate",
+      category: "CRM",
+      description:
+        "Real estate CRM at Techomax Solutions. Contributed modules for transactions, QuickBooks payments, agent management, reporting, and commissions.",
+      skills: ["PHP", "CodeIgniter", "MySQL", "QuickBooks API", "DocuSign API"],
+    },
+    {
+      name: "Shopify Public App Contributions",
+      category: "Public app contribution",
+      description:
+        "Contributed at Cirkle Studio to the public Shopify apps Payfy, Shipfy, Form Builder, and Instafeed.",
+      skills: ["PHP", "Laravel", "Shopify API"],
     },
   ],
   experience: [
     {
-      company: "Tech Company",
-      title: "Senior Software Engineer",
-      dateRange: "Jan 2022 - Present",
+      company: "CrawlApps Technologies",
+      title: "PHP Laravel Developer",
+      dateRange: "August 2025 – Present",
       bullets: [
-        "Led development of microservices architecture serving 1M+ users",
-        "Reduced API response times by 40% through optimization",
-        "Mentored team of 5 junior developers",
+        "Developing a Shopify public app called Mobile App Builder.",
+        "Building functionality that helps merchants create and customize Android and iOS applications for their Shopify stores.",
+        "Implementing integrations with Klaviyo, Growave, and RecurPay.",
       ],
     },
     {
-      company: "Startup Inc",
-      title: "Full Stack Developer",
-      dateRange: "Jun 2020 - Dec 2021",
+      company: "Techomax Solutions",
+      title: "PHP CodeIgniter Developer",
+      dateRange: "November 2024 – July 2025",
       bullets: [
-        "Built and launched MVP product from scratch using React and Node.js",
-        "Implemented CI/CD pipeline reducing deployment time by 60%",
-        "Collaborated with product team to define technical requirements",
+        "Developed modules for a Real Estate CRM.",
+        "Worked on transactions, commissions, reporting, and agent management.",
+        "Integrated QuickBooks, DocuSign, DocuSeal, and AMCads.",
       ],
     },
     {
-      company: "Digital Agency",
-      title: "Frontend Developer",
-      dateRange: "Aug 2018 - May 2020",
+      company: "Cirkle Studio Pvt. Ltd.",
+      title: "PHP Laravel Developer",
+      dateRange: "June 2022 – October 2024",
       bullets: [
-        "Developed responsive web applications for 20+ clients",
-        "Improved site performance scores by 35% on average",
-        "Introduced modern JavaScript frameworks to legacy codebases",
+        "Developed Shopify private applications, including Wishlist, Price Drop Automation, and Order Export tools.",
+        "Contributed to public Shopify apps including Payfy, Shipfy, Form Builder, and Instafeed.",
+        "Built automated order export systems, scheduled product price updates, and customer notifications.",
       ],
     },
   ],
   education: [
     {
-      school: "University Name",
-      degree: "Bachelor of Science in Computer Science",
-      dateRange: "2014 - 2018",
-      achievements: [
-        "Graduated Magna Cum Laude with 3.8 GPA",
-        "Dean's List all semesters",
-        "President of Computer Science Club",
-      ],
-    },
-    {
-      school: "Online Platform",
-      degree: "Full Stack Development Certificate",
-      dateRange: "2019",
-      achievements: [
-        "Completed 500+ hours of coursework",
-        "Built 10+ portfolio projects",
-        "Specialized in React and Node.js",
-      ],
+      school: "Veer Narmad South Gujarat University",
+      degree: "Bachelor of Computer Applications (BCA)",
+      dateRange: "2022",
+      achievements: ["Result: 76.10%"],
     },
   ],
 };
