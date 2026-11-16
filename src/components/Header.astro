@@ -13,61 +13,128 @@ const links = [
 ];
 
 const linkClass =
-  "text-sm font-medium text-muted transition-colors duration-300 hover:text-accent aria-[current=page]:text-accent";
+  "nav-link relative text-sm font-medium text-[#94A3B8] transition-colors duration-300 hover:text-[#22C55E] aria-[current=page]:text-[#22C55E] pb-1";
 ---
 
 <header
   id="header"
   class="fixed top-0 right-0 left-0 z-50 border-b border-transparent transition-all duration-300"
 >
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:justify-center" aria-label="Primary">
-    <a href="#hero" class="text-sm font-semibold text-foreground md:hidden">
-      {siteConfig.name}
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-3" aria-label="Primary">
+    <!-- Logo / Name (always visible) -->
+    <a href="#hero" class="flex items-center gap-3 no-underline group">
+      <span class="flex h-8 w-8 items-center justify-center rounded border border-[#22C55E] bg-[#22C55E]/10 font-mono text-sm font-bold text-[#22C55E] transition-all duration-300 group-hover:bg-[#22C55E]/20 group-hover:shadow-[0_0_12px_rgba(34,197,94,0.4)]" style="font-family: 'JetBrains Mono', monospace;">
+        DP
+      </span>
+      <span class="hidden text-sm font-semibold text-[#F8FAFC] sm:block" style="font-family: 'JetBrains Mono', monospace;">
+        {siteConfig.name.split(" ")[0]} <span class="text-[#22C55E]">{siteConfig.name.split(" ").slice(1).join(" ")}</span>
+      </span>
     </a>
-    <button
-      id="menu-button"
-      type="button"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-border text-foreground transition-colors duration-300 hover:border-accent hover:text-accent md:hidden"
-      aria-expanded="false"
-      aria-controls="mobile-nav"
-      aria-label="Open menu"
-    >
-      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M4 6h16"></path>
-        <path d="M4 12h16"></path>
-        <path d="M4 18h16"></path>
-      </svg>
-      <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-        <path d="M6 6l12 12"></path>
-        <path d="M18 6l-12 12"></path>
-      </svg>
-    </button>
+
+    <!-- Desktop nav links (centered) -->
     <ul class="hidden items-center gap-8 md:flex">
       {
         links.map((link) => (
-          <li>
+          <li class="relative flex flex-col items-center">
             <a href={link.href} class={linkClass} data-nav>
               {link.label}
             </a>
+            <span class="active-dot h-1 w-1 rounded-full bg-[#22C55E] opacity-0 transition-opacity duration-300" aria-hidden="true" />
           </li>
         ))
       }
     </ul>
+
+    <!-- Right side: hire me + hamburger -->
+    <div class="flex items-center gap-3">
+      <!-- Hire Me button (desktop only) -->
+      <a
+        href={`mailto:${siteConfig.social?.email ?? ""}`}
+        class="hidden md:inline-flex items-center gap-2 rounded-full border border-[#22C55E] px-4 py-2 min-h-[40px] text-xs font-semibold text-[#22C55E] transition-all duration-300 hover:bg-[#22C55E]/10 hover:shadow-[0_0_16px_rgba(34,197,94,0.35)] focus-visible:outline-2 focus-visible:outline-[#22C55E]"
+        style="font-family: 'JetBrains Mono', monospace;"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+        Hire Me
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-button"
+        type="button"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.12] bg-white/[0.04] text-[#F8FAFC] backdrop-blur-sm transition-all duration-300 hover:border-[#22C55E]/50 hover:bg-[#22C55E]/10 hover:text-[#22C55E] md:hidden focus-visible:outline-2 focus-visible:outline-[#22C55E]"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        aria-label="Open navigation menu"
+      >
+        <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M4 6h16"></path>
+          <path d="M4 12h16"></path>
+          <path d="M4 18h16"></path>
+        </svg>
+        <svg id="menu-icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12"></path>
+          <path d="M18 6l-12 12"></path>
+        </svg>
+      </button>
+    </div>
   </nav>
-  <div id="mobile-nav" class="hidden border-t border-border bg-background/95 backdrop-blur-md md:hidden">
+
+  <!-- Mobile nav dropdown -->
+  <nav id="mobile-nav" aria-label="Mobile navigation" class="hidden border-t border-white/[0.08] bg-[#0F172A]/95 backdrop-blur-xl md:hidden">
     <ul class="flex flex-col gap-1 px-4 py-3">
       {
         links.map((link) => (
           <li>
-            <a href={link.href} class:list={["block rounded-md px-3 py-3", linkClass]} data-nav>
+            <a href={link.href} class:list={["block rounded-md px-3 py-3 text-sm font-medium text-slate-300 transition-all duration-300 hover:bg-white/[0.04] hover:text-[#22C55E] aria-[current=page]:text-[#22C55E]"]} data-nav>
               {link.label}
             </a>
           </li>
         ))
       }
+      <!-- Hire Me in mobile nav -->
+      <li class="mt-2 border-t border-white/[0.06] pt-2">
+        <a
+          href={`mailto:${siteConfig.social?.email ?? ""}`}
+          class="flex items-center gap-2 rounded-md px-3 py-3 text-sm font-semibold text-[#22C55E] transition-all duration-300 hover:bg-[#22C55E]/10"
+          style="font-family: 'JetBrains Mono', monospace;"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+          Hire Me
+        </a>
+      </li>
     </ul>
-  </div>
+  </nav>
 </header>
+
+<style>
+  /* Underline-grow animation on nav links using ::after pseudo */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background-color: #22C55E;
+    transition: width 0.3s ease;
+    border-radius: 999px;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .nav-link[aria-current="page"]::after {
+    width: 100%;
+  }
+
+  /* Show active dot when link is aria-current=page */
+  .nav-link[aria-current="page"] ~ .active-dot {
+    opacity: 1;
+  }
+</style>
 
 <script>
   const header = document.getElementById("header");
@@ -80,9 +147,15 @@ const linkClass =
     if (!button || !menu) return;
     menu.classList.toggle("hidden", !open);
     button.setAttribute("aria-expanded", String(open));
-    button.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    button.setAttribute("aria-label", open ? "Close menu" : "Open navigation menu");
     iconOpen?.classList.toggle("hidden", open);
     iconClose?.classList.toggle("hidden", !open);
+
+    if (open) {
+      header?.classList.add("bg-[#0F172A]/95", "backdrop-blur-xl", "border-border");
+    } else {
+      onScroll();
+    }
   };
 
   button?.addEventListener("click", () => {
@@ -97,6 +170,17 @@ const linkClass =
     if (event.key === "Escape") setMenuOpen(false);
   });
 
+  document.addEventListener("click", (event) => {
+    if (
+      menu &&
+      !menu.classList.contains("hidden") &&
+      !menu.contains(event.target as Node) &&
+      !button?.contains(event.target as Node)
+    ) {
+      setMenuOpen(false);
+    }
+  });
+
   const onScroll = () => {
     const scrolled = window.scrollY > 24;
     header?.classList.toggle("bg-background/80", scrolled);
@@ -104,35 +188,65 @@ const linkClass =
     header?.classList.toggle("border-border", scrolled);
   };
 
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
   const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav]");
   const sections = [...navLinks]
-    .map((link) => document.querySelector(link.getAttribute("href") || ""))
-    .filter((section): section is Element => section instanceof Element);
+    .map((link) => {
+      const href = link.getAttribute("href") || "";
+      return document.querySelector(href);
+    })
+    .filter((sec): sec is HTMLElement => sec instanceof HTMLElement);
 
   const uniqueSections = [...new Set(sections)];
 
-  if (uniqueSections.length > 0) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (!visible) return;
-        const id = visible.target.id;
-        navLinks.forEach((link) => {
-          if (link.getAttribute("href") === `#${id}`) {
-            link.setAttribute("aria-current", "page");
-          } else {
-            link.removeAttribute("aria-current");
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -55% 0px", threshold: [0.15, 0.4, 0.7] },
-    );
+  const updateActiveSection = () => {
+    // When in hero section or near top of page, no nav link should be highlighted
+    const hero = document.getElementById("hero");
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 300;
+    const headerOffset = 140;
 
-    uniqueSections.forEach((section) => observer.observe(section));
-  }
+    // Check if scrolled near the bottom of page
+    const isAtBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50;
+
+    let activeId: string | null = null;
+
+    if (isAtBottom && uniqueSections.length > 0) {
+      activeId = uniqueSections[uniqueSections.length - 1].id;
+    } else if (heroBottom <= headerOffset) {
+      // Find the current active section whose top is at or above the header offset and bottom is still below it
+      for (const section of uniqueSections) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= headerOffset && rect.bottom > headerOffset) {
+          activeId = section.id;
+          break;
+        }
+      }
+    }
+
+    navLinks.forEach((link) => {
+      const href = link.getAttribute("href");
+      if (activeId && href === `#${activeId}`) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  };
+
+  let ticking = false;
+  const handleScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        onScroll();
+        updateActiveSection();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  onScroll();
+  updateActiveSection();
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener("resize", handleScroll, { passive: true });
 </script>

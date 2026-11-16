@@ -3,10 +3,11 @@ export const siteConfig = {
   title: "PHP Laravel Developer | Shopify App Developer",
   description:
     "Portfolio of Dhaval Parmar, a PHP developer with 4+ years of experience building Laravel and CodeIgniter applications and Shopify public and private apps.",
-  accentColor: "#2563EB",
+  accentColor: "#22C55E",
   social: {
     email: "dhavalsunnyparmar@gmail.com",
     linkedin: "https://www.linkedin.com/in/dhaval-parmar-35bb6b237/",
+    github: "https://github.com/dhaval1627",
   },
   aboutMe:
     "PHP developer with 4+ years of experience building web applications using Laravel, CodeIgniter, and Shopify app development. Experienced in developing Shopify public and private applications, CRM systems, automation tools, REST APIs, and third-party integrations.",
@@ -54,15 +55,17 @@ export const siteConfig = {
     },
     {
       name: "Photo Confirmation App",
+      category: "Private application",
       description:
         "Sends product and order confirmation images by email.",
-      skills: [],
+      skills: ["PHP", "Laravel", "Shopify API"],
     },
     {
       name: "Multi-Store Locator App",
+      category: "Private application",
       description:
         "Uses Google Maps so customers can locate stores.",
-      skills: [],
+      skills: ["PHP", "Laravel", "Google Maps API", "REST APIs"],
     },
     {
       name: "Innovate Real Estate",
