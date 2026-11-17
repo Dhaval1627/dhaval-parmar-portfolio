@@ -6,6 +6,7 @@ export const siteConfig = {
   accentColor: "#22C55E",
   social: {
     email: "dhavalsunnyparmar@gmail.com",
+    phone: "+917046058033",
     linkedin: "https://www.linkedin.com/in/dhaval-parmar-35bb6b237/",
     github: "https://github.com/dhaval1627",
   },

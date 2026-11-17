@@ -101,6 +101,20 @@ const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
         )
       }
       {
+        siteConfig.social?.phone && (
+          <a
+            href={`tel:${siteConfig.social.phone}`}
+            aria-label="Call Dhaval"
+            class="social-icon inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/[0.06] bg-white/[0.03] transition-all duration-300 hover:border-[#22C55E]/40 hover:text-[#22C55E] hover:drop-shadow-[0_0_8px_rgba(34,197,94,0.7)]"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" />
+            </svg>
+          </a>
+        )
+      }
+      {
         siteConfig.social?.linkedin && (
           <a
             href={siteConfig.social.linkedin}
