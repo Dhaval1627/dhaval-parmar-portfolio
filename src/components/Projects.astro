@@ -4,13 +4,39 @@ import { siteConfig } from "../config";
 const hasProjects = siteConfig.projects && siteConfig.projects.length > 0;
 
 const categoryClass: Record<string, string> = {
-  "Shopify public app":
+  "Shopify Public App":
     "border-[#22C55E]/40 bg-[#22C55E]/10 text-[#22C55E]",
-  "Public app contribution":
-    "border-orange-400/40 bg-orange-400/10 text-orange-400",
-  "Private application":
+  "Shopify Private App":
     "border-[#6366F1]/40 bg-[#6366F1]/10 text-[#6366F1]",
-  CRM: "border-slate-500/40 bg-slate-500/10 text-slate-400",
+  "Vertical SaaS · Real Estate CRM":
+    "border-amber-400/40 bg-amber-400/10 text-amber-400",
+};
+
+const getCategoryBadgeClass = (category?: string): string => {
+  if (!category) return "";
+
+  // Exact match
+  if (categoryClass[category]) {
+    return categoryClass[category];
+  }
+
+  // Prefix or keyword match for categories with sub-specialties
+  const normalized = category.toLowerCase();
+  if (normalized.includes("public app")) {
+    return categoryClass["Shopify Public App"];
+  }
+  if (normalized.includes("private app")) {
+    return categoryClass["Shopify Private App"];
+  }
+  if (
+    normalized.includes("crm") ||
+    normalized.includes("saas") ||
+    normalized.includes("real estate")
+  ) {
+    return categoryClass["Vertical SaaS · Real Estate CRM"];
+  }
+
+  return "border-slate-400/40 bg-slate-400/10 text-slate-300";
 };
 ---
 
@@ -57,10 +83,7 @@ const categoryClass: Record<string, string> = {
                     rel: "noopener noreferrer",
                   }
                 : {};
-              const badgeClass = project.category
-                ? categoryClass[project.category] ||
-                  "border-slate-500/40 bg-slate-500/10 text-slate-400"
-                : "";
+              const badgeClass = getCategoryBadgeClass(project.category);
 
               return (
                 <div class="group relative">
